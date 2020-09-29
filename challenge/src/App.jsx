@@ -19,8 +19,9 @@ class App extends React.Component {
     this.nextPage = this.nextPage.bind(this);
     this.lastPage = this.lastPage.bind(this);
   }
-  componentDidMount() {
 
+  componentDidMount() {
+    this.getResults();
   }
 
   getResults() {
@@ -42,8 +43,9 @@ class App extends React.Component {
       .catch((error) => console.log("ERROR: " + error));
   }
 
-  sortResults(term = 'name') {
+  sortResults() {
     let sortedRestaurants = this.state.fetchResults;
+    let term = this.state.sortTerm;
     sortedRestaurants.sort((a, b) => {
       if (a[term] < b[term]) {
         return -1;
@@ -62,7 +64,14 @@ class App extends React.Component {
 
   }
 
-  updateSortTerm() { }
+  updateSortTerm(term) {
+    console.log(term);
+    this.setState({
+      sortTerm: term
+    }, () => {
+      this.sortResults();
+    })
+  }
 
   updatePageShown() {
     let paginatedResults = this.state.sortedResults.slice(
@@ -76,7 +85,6 @@ class App extends React.Component {
 
   nextPage() {
     let nextPage = this.state.currentPage + 1;
-    console.log(nextPage)
     this.setState(
       {
         currentPage: nextPage,
@@ -88,7 +96,6 @@ class App extends React.Component {
 
   lastPage() {
     let lastPage = this.state.currentPage - 1;
-    console.log(lastPage)
     this.setState(
       {
         currentPage: lastPage,
@@ -102,15 +109,22 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>Hello</p>
+          <p></p>
         </header>
         <main>
           <button onClick={() => {
-            console.log("getResults");
             this.getResults();
-          }}>CLICK IT</button>
-          <Table restaurants={this.state.currentPageResults} />
-          <PageButton nextPage={this.nextPage} lastPage={this.lastPage} />
+          }}>
+            Get Restaurants
+          </button>
+          <Table
+            restaurants={this.state.currentPageResults}
+            updateSortTerm={this.updateSortTerm}
+          />
+          <PageButton
+            nextPage={this.nextPage}
+            lastPage={this.lastPage}
+          />
         </main>
       </div>
     );

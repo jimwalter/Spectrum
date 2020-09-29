@@ -8,11 +8,21 @@ function Table(props) {
       <caption>Our restaurants</caption>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Phone Number</th>
-          <th>Genres</th>
+          <th>
+            <button onClick={() => { props.updateSortTerm("name") }}>Name</button>
+          </th>
+          <th>
+            <button onClick={() => { props.updateSortTerm("city") }}>City</button>
+          </th>
+          <th>
+            <button onClick={() => { props.updateSortTerm("state") }}>State</button>
+          </th>
+          <th>
+            <button>Phone Number</button>
+          </th>
+          <th>
+            <button onClick={() => { props.updateSortTerm("genre") }}>Genres</button>
+          </th>
         </tr>
       </thead>
       <tbody>
