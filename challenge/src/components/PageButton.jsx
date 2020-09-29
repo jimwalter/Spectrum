@@ -11,6 +11,9 @@ function PageButton(props) {
       >
         Previous Page
       </button>
+      <p>
+        {props.pageNum}
+      </p>
       <button
         onClick={() => {
           props.nextPage();

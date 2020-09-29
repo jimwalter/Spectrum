@@ -1,0 +1,9 @@
+.searchBar {
+
+    width: 80vw;
+    margin: auto;
+}
+
+form * {
+    margin: 10px auto;
+}

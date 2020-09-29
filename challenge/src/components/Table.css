@@ -1,13 +1,58 @@
+.table-section {
+  min-height: 80vh;
+  word-wrap: break-word;
+}
+
 table,
 th,
 td {
+  margin: 0;
+  padding: 0;
   border: 1px solid black;
 }
 
 table {
   border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+}
+
+th {
+  height: 2em;
+  background-color: #bababaa8;
+}
+
+th,td {
+  /* min-width: 200px; */
+  width: 200px;
+  padding: 10px;
 }
 
 tr:hover {
   background-color: #bababa;
+}
+
+.table-state {
+  max-width: 50px;
+}
+
+.table-name {
+  min-width: 300px;
+}
+
+.table-genre {
+  min-width: 400px;
+}
+
+caption {
+  margin: 10px auto;
+  font-size: 2em;
+}
+
+th:hover {
+  cursor: pointer;
+}
+
+th:nth-of-type(4):hover {
+  cursor: default;
 }
