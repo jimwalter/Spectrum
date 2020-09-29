@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import data from "./data.json";
 import Table from "./components/Table.jsx";
 import PageButton from "./components/PageButton.jsx";
 
@@ -8,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fetchResults: data,
+      fetchResults: [],
       sortedResults: [],
       currentPageResults: [],
       sortTerm: "name",
@@ -17,8 +16,8 @@ class App extends React.Component {
     this.getResults = this.getResults.bind(this);
     this.updateSortTerm = this.updateSortTerm.bind(this);
     this.updatePageShown = this.updatePageShown.bind(this);
-    // this.nextPage = this.nextPage.bind(this);
-    // this.lastPage = this.lastPage.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.lastPage = this.lastPage.bind(this);
   }
   componentDidMount() {
 
@@ -31,11 +30,19 @@ class App extends React.Component {
       },
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState(
+          {
+            fetchResults: data
+          })
+      })
+      .then(() => {
+        this.sortResults();
+      })
       .catch((error) => console.log("ERROR: " + error));
   }
 
-  sortResults(term) {
+  sortResults(term = 'name') {
     let sortedRestaurants = this.state.fetchResults;
     sortedRestaurants.sort((a, b) => {
       if (a[term] < b[term]) {
@@ -46,15 +53,13 @@ class App extends React.Component {
       }
       return 0;
     });
-    this.setState(
-      {
-        sortedResults: sortedRestaurants,
-      },
-      () => {
-        console.log("UPDATING PAGE SHOWN");
-        // this.updatePageShown();
-      }
-    );
+
+    this.setState({
+      sortedResults: sortedRestaurants
+    }, () => {
+      this.updatePageShown();
+    })
+
   }
 
   updateSortTerm() { }
@@ -64,10 +69,33 @@ class App extends React.Component {
       this.state.currentPage * 10,
       (this.state.currentPage + 1) * 10
     );
-    console.log(paginatedResults);
     this.setState({
       currentPageResults: paginatedResults,
     });
+  }
+
+  nextPage() {
+    let nextPage = this.state.currentPage + 1;
+    console.log(nextPage)
+    this.setState(
+      {
+        currentPage: nextPage,
+      },
+      () => {
+        this.updatePageShown();
+      })
+  }
+
+  lastPage() {
+    let lastPage = this.state.currentPage - 1;
+    console.log(lastPage)
+    this.setState(
+      {
+        currentPage: lastPage,
+      },
+      () => {
+        this.updatePageShown();
+      })
   }
 
   render() {
@@ -90,24 +118,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// nextPage() {
-//   console.log("Before setState: " + this.state.currentPage);
-//   this.setState(
-//     {
-//       currentPage: this.state.currentPage++,
-//     },
-//     console.log("AFTER setState: " + this.state.currentPage)
-//   );
-// }
-
-// lastPage() {
-//   let currentPageState = this.state.currentPage;
-//   console.log("Before setState: " + this.state.currentPage);
-//   this.setState(
-//     {
-//       currentPage: this.state.currentPage--,
-//     },
-//     console.log("AFTER setState: " + this.state.currentPage)
-//   );
-// }
