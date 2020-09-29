@@ -1,4 +1,5 @@
 import React from "react";
+import "./Table.css";
 
 function Table(props) {
   const { restaurants } = props;
