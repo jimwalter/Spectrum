@@ -12,6 +12,7 @@ class App extends React.Component {
       currentPageResults: [],
       sortTerm: "name",
       currentPage: 0,
+      maxPage: 0,
     };
     this.getResults = this.getResults.bind(this);
     this.updateSortTerm = this.updateSortTerm.bind(this);
@@ -32,9 +33,11 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
+        let pages = data.length / 10;
         this.setState(
           {
-            fetchResults: data
+            fetchResults: data,
+            maxPage: pages
           })
       })
       .then(() => {
@@ -85,24 +88,29 @@ class App extends React.Component {
 
   nextPage() {
     let nextPage = this.state.currentPage + 1;
-    this.setState(
-      {
-        currentPage: nextPage,
-      },
-      () => {
-        this.updatePageShown();
-      })
+    let maxPage_ = this.state.maxPage;
+    if (nextPage <= maxPage_) {
+      this.setState(
+        {
+          currentPage: nextPage,
+        },
+        () => {
+          this.updatePageShown();
+        })
+    }
   }
 
   lastPage() {
     let lastPage = this.state.currentPage - 1;
-    this.setState(
-      {
-        currentPage: lastPage,
-      },
-      () => {
-        this.updatePageShown();
-      })
+    if (lastPage >= 0) {
+      this.setState(
+        {
+          currentPage: lastPage,
+        },
+        () => {
+          this.updatePageShown();
+        })
+    }
   }
 
   render() {
