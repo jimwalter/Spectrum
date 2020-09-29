@@ -19,7 +19,7 @@ table {
 
 th {
   height: 2em;
-  background-color: #bababaa8;
+  background-color: #e1dfdf;
 }
 
 th,td {
@@ -29,7 +29,7 @@ th,td {
 }
 
 tr:hover {
-  background-color: #bababa;
+  background-color: #d7e8f4;
 }
 
 .table-state {

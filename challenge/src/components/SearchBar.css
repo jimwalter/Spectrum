@@ -7,3 +7,7 @@
 form * {
     margin: 10px auto;
 }
+
+select option[data-default] {
+  color: #888;
+}
