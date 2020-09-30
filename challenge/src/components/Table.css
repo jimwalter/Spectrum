@@ -1,6 +1,6 @@
 .table-section {
-  min-height: 80vh;
-  word-wrap: break-word;
+  min-height: 40vh;
+  margin: 20px;
 }
 
 table,
@@ -13,12 +13,13 @@ td {
 
 table {
   border-collapse: collapse;
-  width: 80%;
+  width: 80vw;
   margin: auto;
 }
 
 th {
   height: 2em;
+  font-size: 1em;
   background-color: #e1dfdf;
 }
 
@@ -40,13 +41,23 @@ tr:hover {
   min-width: 300px;
 }
 
+.table-telephone {
+  min-width: 125px;
+}
+
 .table-genre {
   min-width: 400px;
 }
 
+.table-name,
+.table-genre {
+  word-wrap: break-word;
+}
+
 caption {
-  margin: 10px auto;
-  font-size: 2em;
+  margin: 20px auto;
+  font-size: 3em;
+  align-items: flex-start;
 }
 
 th:hover {
@@ -55,4 +66,10 @@ th:hover {
 
 th:nth-of-type(4):hover {
   cursor: default;
+}
+
+.no-results{
+  min-height: 40vh;
+  width: 80vw;
+  margin: auto;
 }

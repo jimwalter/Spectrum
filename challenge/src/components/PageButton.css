@@ -1,0 +1,25 @@
+.pageButton {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin: 20px auto;
+}
+
+.pageButton * {
+    margin: 10px; 
+    box-sizing: border-box;
+    height: 30px;
+}
+
+.buttonOne {
+    margin-left: 0;
+}
+
+.pageButton p {
+    margin: auto auto;
+    font-size: 1.5em;
+}
+
+.buttonTwo {
+    margin-right: 0;
+}

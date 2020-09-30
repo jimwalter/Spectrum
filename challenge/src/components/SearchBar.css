@@ -1,13 +1,14 @@
 .searchBar {
-
-    width: 80vw;
+    width: 20vw;
     margin: auto;
 }
 
 form * {
     margin: 10px auto;
+    font-size: 1em ;
 }
 
-select option[data-default] {
-  color: #888;
+input, select, .clear {
+  box-sizing: border-box;
+  height: 30px;
 }

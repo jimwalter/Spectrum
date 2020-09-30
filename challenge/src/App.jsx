@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import SearchBar from "./components/SearchBar.jsx";
+import Instructions from "./components/Instructions.jsx";
 import Table from "./components/Table.jsx";
 import PageButton from "./components/PageButton.jsx";
 
@@ -48,7 +49,7 @@ class App extends React.Component {
     this.getResults();
   }
 
-  getResults(e) {
+  getResults() {
     // e.preventDefault();
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
@@ -109,6 +110,7 @@ class App extends React.Component {
     });
   }
 
+  // method to display next page of restaurant results
   nextPage() {
     let nextPage = this.state.currentPage + 1;
     let maxPage_ = this.state.maxPage;
@@ -123,6 +125,7 @@ class App extends React.Component {
     }
   }
 
+  // method to return to last page of restaurant results
   lastPage() {
     let lastPage = this.state.currentPage - 1;
     if (lastPage >= 0) {
@@ -136,18 +139,21 @@ class App extends React.Component {
     }
   }
 
+  // method to store users search term in state
   handleFilterChange(e) {
     this.setState({
       filterTerm: e.target.value.toLowerCase(),
     })
   }
 
+  // method to store users selected category in state
   handleCategorySelect(e) {
     this.setState({
       category: e.target.value.toLowerCase(),
     });
   }
 
+  // method to update the table with relevant results
   handleFormSubmit(e) {
     e.preventDefault();
     let term = this.state.filterTerm;
@@ -172,14 +178,16 @@ class App extends React.Component {
           <p></p>
         </header>
         <main>
-
-          <SearchBar
-            getResults={this.getResults}
-            handleFilterChange={this.handleFilterChange}
-            categories={this.state.categories}
-            handleCategorySelect={this.handleCategorySelect}
-            handleFormSubmit={this.handleFormSubmit}
-          />
+          <div className="top">
+            <SearchBar
+              returnToSortedResults={this.updatePageShown}
+              handleFilterChange={this.handleFilterChange}
+              categories={this.state.categories}
+              handleCategorySelect={this.handleCategorySelect}
+              handleFormSubmit={this.handleFormSubmit}
+            />
+            <Instructions />
+          </div>
           <Table
             restaurants={this.state.currentPageResults}
             updateSortTerm={this.updateSortTerm}

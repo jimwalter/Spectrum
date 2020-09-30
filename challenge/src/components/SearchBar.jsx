@@ -16,9 +16,10 @@ function SearchBar(props) {
                 </select>
                 <br />
                 <input id="submit" type="submit" name="filter" value="Filter Results" onClick={props.handleFormSubmit} /><br />
-                <button onClick={props.getResults}>
+                <button className="clear"
+                    onClick={props.returnToSortedResults}>
                     Clear Search Results
-          </button><br />
+                </button><br />
             </form>
         </div>
     )

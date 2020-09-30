@@ -3,8 +3,9 @@ import "./PageButton.css";
 
 function PageButton(props) {
   return (
-    <div>
+    <div className="pageButton">
       <button
+        className="buttonOne"
         onClick={() => {
           props.lastPage();
         }}
@@ -12,9 +13,10 @@ function PageButton(props) {
         Previous Page
       </button>
       <p>
-        {props.pageNum}
+        page {props.pageNum}
       </p>
       <button
+        className="buttonTwo"
         onClick={() => {
           props.nextPage();
         }}
