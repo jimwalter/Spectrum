@@ -5,7 +5,6 @@ function Table(props) {
   const { restaurants } = props;
   return (
     <div className="table-section">
-
       <table>
         <caption>Restaurant Results</caption>
         <thead>

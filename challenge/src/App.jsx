@@ -1,8 +1,11 @@
 import React from "react";
 import "./App.css";
+
 import SearchBar from "./components/SearchBar.jsx";
 import Table from "./components/Table.jsx";
 import PageButton from "./components/PageButton.jsx";
+
+require('dotenv').config();
 
 class App extends React.Component {
   constructor(props) {
@@ -45,10 +48,11 @@ class App extends React.Component {
     this.getResults();
   }
 
-  getResults() {
+  getResults(e) {
+    // e.preventDefault();
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
-        Authorization: 'Api-Key q3MNxtfep8Gt',
+        Authorization: process.env.REACT_APP_TOKEN,
       },
     })
       .then(response => response.json())
