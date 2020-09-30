@@ -12,3 +12,8 @@ input, select, .clear {
   box-sizing: border-box;
   height: 30px;
 }
+
+label {
+  font-size: 1.2em;
+  font-weight: 500;
+}

@@ -1,4 +1,11 @@
 .instructions {
     width: 60vw;
     text-align: center;
+    font-size: 1.2em;
+    padding: auto;
+}
+
+.instructions p {
+    width: 80%;
+    margin: auto;
 }
