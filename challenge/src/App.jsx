@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
-
-import SearchBar from "./components/SearchBar.jsx";
-import Instructions from "./components/Instructions.jsx";
 import Table from "./components/Table.jsx";
+import SearchBar from "./components/SearchBar.jsx";
 import PageButton from "./components/PageButton.jsx";
+import Instructions from "./components/Instructions.jsx";
 
 require('dotenv').config();
 
@@ -49,6 +48,7 @@ class App extends React.Component {
     this.getResults();
   }
 
+  // method to obtain restaurants from API
   getResults() {
     // e.preventDefault();
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
@@ -71,6 +71,7 @@ class App extends React.Component {
       .catch((error) => console.log("ERROR: " + error));
   }
 
+  // method to sort results based on users selection
   sortResults() {
     let sortedRestaurants = this.state.fetchResults;
     let term = this.state.sortTerm;
@@ -92,6 +93,7 @@ class App extends React.Component {
 
   }
 
+  // method to store users sort term in state
   updateSortTerm(term) {
     this.setState({
       sortTerm: term
@@ -100,6 +102,7 @@ class App extends React.Component {
     })
   }
 
+  // method to display restaurants
   updatePageShown(restaurantArray = this.state.sortedResults) {
     let paginatedResults = restaurantArray.slice(
       this.state.currentPage * 10,
@@ -180,7 +183,7 @@ class App extends React.Component {
         <main>
           <div className="top">
             <SearchBar
-              returnToSortedResults={this.updatePageShown}
+              returnToSortedResults={this.updateSortTerm}
               handleFilterChange={this.handleFilterChange}
               categories={this.state.categories}
               handleCategorySelect={this.handleCategorySelect}

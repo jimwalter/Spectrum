@@ -4,3 +4,8 @@
     width: 80vw;
     margin: auto;
 }
+
+input:hover, select:hover, button:hover {
+    cursor: pointer;
+}
+

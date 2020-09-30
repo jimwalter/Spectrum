@@ -71,5 +71,14 @@ th:nth-of-type(4):hover {
 .no-results{
   min-height: 40vh;
   width: 80vw;
-  margin: auto;
+  margin: 5% auto;
+  color: #f95757;
+  font-size: 2em;
+  text-align: center;
+}
+
+.no-results p {
+  padding: 10px;
+  border: 2px solid #ff0000;
+  border-radius: 5px;
 }

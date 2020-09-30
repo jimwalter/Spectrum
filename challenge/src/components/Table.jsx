@@ -5,7 +5,7 @@ function Table(props) {
   const { restaurants } = props;
   if (!restaurants.length) {
     return (<div className="no-results">
-      <p>There were no results for your search. Please try a different search term or category</p>
+      <p>There were no results for your search. Please try a different search term or category.</p>
     </div>)
   }
   return (
