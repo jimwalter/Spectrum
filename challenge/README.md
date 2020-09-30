@@ -2,7 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## To run locally:
 
 1. Add a `.env` file in the root of the "challenge" folder with a property called `REACT_APP_TOKEN` and set it equal to the appropriate API key.
+
 EX: `REACT_APP_TOKEN=myToken123 456`
+
 2. Open the challenge folder in a terminal window and run `npm start`.
 
 ## Available Scripts
